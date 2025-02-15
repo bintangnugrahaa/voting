@@ -5,10 +5,6 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('app.user.index') }}" class="btn btn-danger mb-3">Back</a>
-        </div>
-
-        <div class="col-md-12">
             @include('includes.alert')
         </div>
 
@@ -59,7 +55,10 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{ route('app.user.index') }}" class="btn btn-danger">Back</a>
+                        </div>
                     </form>
                 </div>
             </div>
