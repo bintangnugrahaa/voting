@@ -7,7 +7,7 @@
 
         @can('candidate-create')
             <div class="col-md-12">
-                <a href="{{ route('app.candidate.create') }}" class="btn btn-primary mb-3">Add candidate</a>
+                <a href="{{ route('app.candidate.create') }}" class="btn btn-primary mb-3">Add Candidate</a>
             </div>
         @endcan
 
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">candidate</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Candidate</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -39,8 +39,10 @@
                             <tbody>
                                 @foreach ($candidates as $candidate)
                                     <tr>
-                                        <td>{{ $candidate->email }}</td>
-                                        <td>{{ $candidate->image }}</td>
+                                        <td>{{ $candidate->name }}</td>
+                                        <td><img src="{{ asset('storage/' . $candidate->image) }}"
+                                                alt="{{ $candidate->name }}" class="img-thumbnail" width="100">
+                                        </td>
                                         <td>{{ $candidate->chairman }}</td>
                                         <td>{{ $candidate->vice_chairman }}</td>
                                         <td>{{ $candidate->vision }}</td>
