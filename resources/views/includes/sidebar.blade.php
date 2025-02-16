@@ -20,7 +20,7 @@
     @endcan
 
     @can('candidate-view')
-        <li class="nav-item {{ request()->is('app/candidate') ? 'active' : '' }}">
+        <li class="nav-item {{ request()->is('app/candidate*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('app.candidate.index') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Candidate</span></a>
@@ -56,14 +56,4 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
-    {{-- <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="{{ asset('assets/img/undraw_rocket.svg') }}" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
-            and more!</p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
-            Pro!</a>
-    </div> --}}
-
 </ul>
