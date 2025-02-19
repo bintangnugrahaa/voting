@@ -34,7 +34,7 @@
                             <tbody>
                                 @foreach ($voters as $voter)
                                     <tr>
-                                        <td>{{ $voter->user }}</td>
+                                        <td>{{ $voter->name }}</td>
                                         <td>{{ $voter->user->email }}</td>
                                         <td>
 
@@ -43,7 +43,8 @@
                                                     class="btn btn-warning">Edit</a>
                                             @endcan
 
-                                            <a href="{{ route('app.voter.show', $voter->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('app.voter.show', $voter->id) }}"
+                                                class="btn btn-info">Show</a>
 
                                             @can('voter-delete')
                                                 <form action="{{ route('app.voter.destroy', $voter->id) }}" method="POST"
