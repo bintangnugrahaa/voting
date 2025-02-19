@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Master the fundamentals and advanced techniques of Laravel 11 to build a dynamic, real-time voting website from the ground up.">
+    <meta name="author" content="Muhammad Bintang Nugraha">
+    <meta name="keywords" content="Laravel 11, Web Development, Voting System, Authentication, User Management, Scalable Applications">    
 
     <title>@yield('title')</title>
 
