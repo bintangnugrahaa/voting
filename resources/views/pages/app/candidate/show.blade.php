@@ -12,38 +12,42 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
-                            <tr>
-                                <th>Name</th>
-                                <td>{{ $candidate->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Image</th>
-                                <td><img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
-                                        class="img-thumbnail" width="100"></td>
-                            </tr>
-                            <tr>
-                                <th>Chairman</th>
-                                <td>{{ $candidate->chairman }}</td>
-                            </tr>
-                            <tr>
-                                <th>Vice Chairman</th>
-                                <td>{{ $candidate->vice_chairman }}</td>
-                            </tr>
-                            <tr>
-                                <th>Vision</th>
-                                <td>{{ $candidate->vision }}</td>
-                            </tr>
-                            <tr>
-                                <th>Mission</th>
-                                <td>{{ $candidate->mission }}</td>
-                            </tr>
-                            <tr>
-                                <th>Sort Order</th>
-                                <td>{{ $candidate->sort_order }}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ $candidate->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                                            class="img-thumbnail" width="100">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Chairman</th>
+                                    <td>{{ $candidate->chairman }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Vice Chairman</th>
+                                    <td>{{ $candidate->vice_chairman }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Vision</th>
+                                    <td>{{ $candidate->vision }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Mission</th>
+                                    <td>{{ $candidate->mission }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sort Order</th>
+                                    <td>{{ $candidate->sort_order }}</td>
+                                </tr>
+                            </tbody>
                         </table>
-                        <div class="col-md-12">
-                            <a href="{{ route('app.candidate.index') }}" class="btn btn-danger mb-3">Back</a>
+                        <div class="text-end">
+                            <a href="{{ route('app.candidate.index') }}" class="btn btn-danger">Back</a>
                         </div>
                     </div>
                 </div>
