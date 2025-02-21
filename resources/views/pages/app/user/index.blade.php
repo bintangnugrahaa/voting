@@ -37,7 +37,6 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->first()->name }}</td>
                                         <td>
-
                                             @can('user-update')
                                                 <a href="{{ route('app.user.edit', $user->id) }}"
                                                     class="btn btn-warning">Edit</a>
@@ -46,11 +45,13 @@
                                             <a href="{{ route('app.user.show', $user->id) }}" class="btn btn-info">Show</a>
 
                                             @can('user-delete')
-                                                <form action="{{ route('app.user.destroy', $user->id) }}" method="POST"
-                                                    class="d-inline">
+                                                <button class="btn btn-danger"
+                                                    onclick="confirmDelete({{ $user->id }}, '{{ $user->email }}')">Delete</button>
+                                                <form id="delete-form-{{ $user->id }}"
+                                                    action="{{ route('app.user.destroy', $user->id) }}" method="POST"
+                                                    class="d-none">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             @endcan
                                         </td>
@@ -63,10 +64,52 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <strong id="deleteUserEmail"></strong>? This action cannot be undone.
+                    </p>
+                    <input type="text" id="deleteConfirmInput" class="form-control"
+                        placeholder="Type 'DELETE' to confirm">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton" disabled>Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('scripts')
     <script>
+        let deleteForm;
+
+        function confirmDelete(id, email) {
+            deleteForm = document.getElementById(`delete-form-${id}`);
+            document.getElementById('deleteUserEmail').textContent = email;
+            $('#confirmDeleteModal').modal('show');
+        }
+
+        document.getElementById('deleteConfirmInput').addEventListener('input', function() {
+            document.getElementById('confirmDeleteButton').disabled = this.value.trim().toUpperCase() !== 'DELETE';
+        });
+
+        document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+            if (deleteForm) {
+                deleteForm.submit();
+            }
+        });
+
         $(document).ready(function() {
             $('#dataTable').DataTable();
         });
