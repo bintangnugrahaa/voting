@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Voting <sup>2</sup></div>
     </a>
 
     <!-- Divider -->
@@ -16,6 +16,14 @@
             <a class="nav-link" href="{{ route('app.dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
+        </li>
+    @endcan
+
+    @can('candidate-view')
+        <li class="nav-item {{ request()->is('app/candidate') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('app.candidate.index') }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Candidate</span></a>
         </li>
     @endcan
 
