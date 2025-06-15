@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Create User')
+@section('title', 'Create Voter')
 
 @section('content')
     <div class="row">
         <div class="col-md-12 mb-3">
-            <a href="{{ route('app.user.index') }}" class="btn btn-danger">Back</a>
+            <a href="{{ route('app.voter.index') }}" class="btn btn-danger">Back</a>
         </div>
 
         <div class="col-md-12">
@@ -15,10 +15,10 @@
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Create User</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Create Voter</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('app.user.store') }}" method="POST">
+                    <form action="{{ route('app.voter.store') }}" method="POST">
                         @csrf
 
                         <div class="form-row">
@@ -48,21 +48,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="role">Role</label>
-                            <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
-                                <option value="">Select Role</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('role')
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name"
+                                class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
+                            @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create User</button>
+                        <button type="submit" class="btn btn-primary">Create voter</button>
                     </form>
                 </div>
             </div>
