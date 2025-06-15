@@ -25,7 +25,15 @@
                                 </h5>
                                 <p><strong>Visi:</strong> {{ $candidate->vision }}</p>
                                 <p><strong>Misi:</strong> {{ $candidate->mission }}</p>
-                                <a href="#" class="btn btn-primary mt-auto">Vote</a>
+                                @if (Auth::user()->voter->vote)
+                                    <button class="btn btn-primary" disabled>
+                                        Already Voted
+                                    </button>
+                                @else
+                                    <a href="{{ route('app.vote', $candidate->id) }}" class="btn btn-primary">
+                                        Vote
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

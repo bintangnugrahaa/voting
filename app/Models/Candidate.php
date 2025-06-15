@@ -19,7 +19,7 @@ class Candidate extends Model
         'sort_order',
     ];
 
-    public function vote()
+    public function votes()
     {
         return $this->hasMany(Vote::class);
     }
