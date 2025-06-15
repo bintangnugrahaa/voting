@@ -3,9 +3,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('app.dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-poll"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Voting <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Voting</div>
     </a>
 
     <!-- Divider -->
@@ -14,7 +14,7 @@
     @can('dashboard-view')
         <li class="nav-item {{ request()->is('app/dashboard') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('app.dashboard') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-chart-line"></i>
                 <span>Dashboard</span></a>
         </li>
     @endcan
@@ -22,7 +22,7 @@
     @can('candidate-view')
         <li class="nav-item {{ request()->is('app/candidate*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('app.candidate.index') }}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-fw fa-id-badge"></i>
                 <span>Candidate</span></a>
         </li>
     @endcan
@@ -30,7 +30,7 @@
     @can('voter-view')
         <li class="nav-item {{ request()->is('app/voter*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('app.voter.index') }}">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-vote-yea"></i>
                 <span>Voter</span></a>
         </li>
     @endcan
@@ -39,7 +39,7 @@
         <li class="nav-item {{ request()->is('app/users*') || request()->is('app/roles*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserManagement"
                 aria-expanded="true" aria-controls="collapseUserManagement">
-                <i class="fas fa-fw fa-users"></i>
+                <i class="fas fa-fw fa-user-cog"></i>
                 <span>User Management</span>
             </a>
             <div id="collapseUserManagement"
@@ -48,11 +48,11 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     @can('user-view')
                         <a class="collapse-item {{ request()->is('app/user*') ? 'active' : '' }}"
-                            href="{{ route('app.user.index') }}">User</a>
+                            href="{{ route('app.user.index') }}"><i class="fas fa-fw fa-user"></i> User</a>
                     @endcan
                     @can('role-view')
                         <a class="collapse-item {{ request()->is('app/role*') ? 'active' : '' }}"
-                            href="{{ route('app.role.index') }}">Role</a>
+                            href="{{ route('app.role.index') }}"><i class="fas fa-fw fa-user-shield"></i> Role</a>
                     @endcan
                 </div>
             </div>
