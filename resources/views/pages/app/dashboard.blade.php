@@ -3,6 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    <style>
+        .btn {
+            width: 100%;
+        }
+    </style>
     <div class="col-md-12">
         @include('includes.alert')
     </div>
@@ -14,28 +19,32 @@
                     <h1 class="text-center">Pilih Kandidat Terfavorit Kamu</h1>
                 </div>
 
-                @foreach ($candidates as $candidate)
-                    <div class="col-12 col-md-6 col-lg-3 mb-3">
-                        <div class="card h-100 shadow-sm">
-                            <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
-                                class="card-img-top mb-3">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ $candidate->name }}</h5>
-                                <p><strong>Visi:</strong> {{ $candidate->vision }}</p>
-                                <p><strong>Misi:</strong> {{ $candidate->mission }}</p>
-                                @if (Auth::user()->voter->vote)
-                                    <button class="btn btn-secondary" disabled>
-                                        Already Voted
-                                    </button>
-                                @else
-                                    <a href="{{ route('app.vote', $candidate->id) }}" class="btn btn-primary">
-                                        Vote
-                                    </a>
-                                @endif
+                <div class="row justify-content-center">
+                    @foreach ($candidates as $candidate)
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card h-100 shadow-sm d-flex flex-column">
+                                <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                                    class="card-img-top mb-3">
+                                <div class="card-body d-flex flex-column flex-grow-1">
+                                    <h5 class="card-title">{{ $candidate->name }}</h5>
+                                    <p><strong>Visi:</strong> {{ $candidate->vision }}</p>
+                                    <p><strong>Misi:</strong> {{ $candidate->mission }}</p>
+                                    <div class="mt-auto">
+                                        @if (Auth::user()->voter->vote)
+                                            <button class="btn btn-secondary w-100" disabled>
+                                                Already Voted
+                                            </button>
+                                        @else
+                                            <a href="{{ route('app.vote', $candidate->id) }}" class="btn btn-primary w-100">
+                                                Vote
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         @endcan
     @endrole
