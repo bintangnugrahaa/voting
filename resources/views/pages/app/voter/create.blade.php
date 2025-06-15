@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name"
-                                class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
+                                class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" value="{{ old('name') }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
