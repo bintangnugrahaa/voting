@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $candidates = Candidate::all();
+        $candidates = Candidate::withCount('votes')->get()->sortBy('sort_order');
 
         return view('pages.app.dashboard', compact('candidates'));
     }
