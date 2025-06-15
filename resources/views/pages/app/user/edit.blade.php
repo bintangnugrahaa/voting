@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'User Edit')
+@section('title', 'Edit User')
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <a href="{{ route('app.user.index') }}" class="btn btn-danger mb-3">Back</a>
+        <div class="col-md-12 mb-3">
+            <a href="{{ route('app.user.index') }}" class="btn btn-danger">Back</a>
         </div>
 
         <div class="col-md-12">
@@ -22,27 +22,30 @@
                         @csrf
                         @method('PUT')
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email"
-                                class="form-control @error('email') is-invalid @enderror"
-                                value="{{ old('email', $user->email) }}" placeholder="Enter email">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    value="{{ old('email', $user->email) }}" placeholder="Enter email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password"
-                                class="form-control @error('password') is-invalid @enderror" placeholder="Enter password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="Enter password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -61,7 +64,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update User</button>
                     </form>
                 </div>
             </div>

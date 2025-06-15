@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Role')
+@section('title', 'Role Management')
 
 @section('content')
     <div class="row">
 
         @can('role-create')
-            <div class="col-md-12">
-                <a href="{{ route('app.role.create') }}" class="btn btn-primary mb-3">Add Role</a>
+            <div class="col-md-12 mb-3">
+                <a href="{{ route('app.role.create') }}" class="btn btn-primary">Add Role</a>
             </div>
         @endcan
 
@@ -18,39 +18,39 @@
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Role</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Roles List</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="thead-light">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Permission</th>
-                                    <th>Action</th>
+                                    <th>Permissions</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach ($roles as $role)
                                     <tr>
                                         <td>{{ $role->name }}</td>
-                                        <td>{{ $role->permissions->count() }} Permission</td>
+                                        <td>{{ $role->permissions->count() }}
+                                            Permission{{ $role->permissions->count() > 1 ? 's' : '' }}</td>
                                         <td>
-
                                             @can('role-update')
                                                 <a href="{{ route('app.role.edit', $role->id) }}"
-                                                    class="btn btn-warning">Edit</a>
+                                                    class="btn btn-warning btn-sm">Edit</a>
                                             @endcan
 
-                                            <a href="{{ route('app.role.show', $role->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('app.role.show', $role->id) }}"
+                                                class="btn btn-info btn-sm">Show</a>
 
                                             @can('role-delete')
                                                 <form action="{{ route('app.role.destroy', $role->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form>
                                             @endcan
                                         </td>
@@ -68,7 +68,23 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                responsive: true,
+                autoWidth: false,
+                language: {
+                    search: "Search:",
+                    lengthMenu: "Display _MENU_ records per page",
+                    info: "Showing page _PAGE_ of _PAGES_",
+                    infoEmpty: "No records available",
+                    infoFiltered: "(filtered from _MAX_ total records)",
+                    paginate: {
+                        first: "First",
+                        last: "Last",
+                        next: "Next",
+                        previous: "Previous"
+                    }
+                }
+            });
         });
     </script>
 @endsection
